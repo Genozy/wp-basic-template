@@ -21,6 +21,11 @@
                     Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+
+                <a href="<?php echo home_url(); ?>">
+                  <img src="<?php echo get_stylesheet_directory_uri(); ?>/logo.png" alt="Website Logo" />
+                </a>
+
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,7 +49,7 @@
 
 		<!-- Page Header -->
 		<!-- Set your background image for this header on the line below. -->
-		<header class="intro-header" style="background-color:#888">
+		<header class="intro-header" style="background-image:url('<?php header_image(); ?>')">
 				<div class="container">
 						<div class="row">
 								<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -70,6 +75,3 @@
     ) ); ?>
 </ul>
 -->
-
-	<div class="container">
-		<div id="content" class="site-content">

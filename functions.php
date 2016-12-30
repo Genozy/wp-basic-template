@@ -37,7 +37,7 @@ function genozy_setup() {
   // This theme uses wp_nav_menu() in two locations.
   register_nav_menus( array(
     'primary' => __( 'Primary Menu', 'genozy' ),
-    'social'  => __( 'Social Links Menu', 'genozy' ),
+    'secondary'  => __( 'Secondary Menu', 'genozy' ),
   ) );
 
   /*
@@ -73,22 +73,12 @@ function genozy_setup() {
 }
 add_action( 'after_setup_theme', 'genozy_setup' );
 
-
-function hook_css() {
-	$output="
-    <link rel='stylesheet' href='/wp-content/themes/genozy/assets/css/bootstrap.min.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='/wp-content/themes/genozy/assets/css/bootstrap-theme.min.css' type='text/css' media='all' />
-    ";
-	echo $output;
-}
-
 function hook_footer() {
 	$output="::FOOTER";
 	echo $output;
 }
 
 
-add_action('wp_head','hook_css');
 add_action('wp_footer','hook_footer');
 
 
@@ -102,9 +92,8 @@ function genozy_scripts() {
 
   // used in the main stylesheet.
   wp_enqueue_style( 'bootstrap-css', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '3.3.7' );
-//  wp_enqueue_style( 'bootstrap-theme-css', get_template_directory_uri() . '/assets/css/bootstrap-theme.min.css', array(), '3.3.7' );
+  // wp_enqueue_style( 'bootstrap-theme-css', get_template_directory_uri() . '/assets/css/bootstrap-theme.min.css', array(), '3.3.7' );
   wp_enqueue_style( 'bootstrap-blog-css', get_template_directory_uri() . '/assets/css/clean-blog.min.css', array(), null );
-
   // Theme stylesheet.
 	wp_enqueue_style( 'genozy-style', get_stylesheet_uri() );
 
@@ -132,12 +121,18 @@ function genozy_widgets_init() {
 		'name'          => __( 'Footer Content 1', 'genozy' ),
 		'id'            => 'footer-1',
 		'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'genozy' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
 	) );
 
 
 }
 add_action( 'widgets_init', 'genozy_widgets_init' );
+
+
+  /**
+   * Customizer additions.
+   */
+  require get_template_directory() . '/inc/customizer.php';
